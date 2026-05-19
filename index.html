@@ -4,21 +4,86 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Process Innovation Lab</title>
-<meta name="description" content="Customer experience · Operational excellence · Intelligent automation. Practical training and coaching for continuous-improvement professionals learning to do their best work in the AI era.">
+<meta name="description" content="Orchestrate AI. Amplify your craft. Training and coaching for continuous-improvement professionals doing their best work in the AI era.">
+<link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:title" content="The Process Innovation Lab">
 <meta property="og:description" content="Orchestrate AI. Amplify your craft. Training and coaching for continuous-improvement professionals.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://theprocessinnovationlab.com/">
+<meta property="og:image" content="https://theprocessinnovationlab.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Process Innovation Lab">
+<meta name="twitter:description" content="Orchestrate AI. Amplify your craft. Training and coaching for continuous-improvement professionals.">
+<meta name="twitter:image" content="https://theprocessinnovationlab.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 <style>
+  /* ---- PIL Design System tokens (inlined from colors_and_type.css) ---- */
   :root {
-    --paper: #faf7f1;
-    --ink: #1c1a17;
-    --muted: #6b6358;
-    --line: #e3ddd0;
-    --accent: #0f5d54;
-    --accent-soft: #0f5d5414;
+    /* Primary */
+    --pil-navy:        #1c3464;
+    --pil-teal:        #348bb3;
+    --pil-tint:        #c5e2ea;
+
+    /* Neutrals */
+    --pil-white:       #ffffff;
+    --pil-paper:       #f6f8fb;
+    --pil-rule:        #e3e8ef;
+    --pil-rule-strong: #cfd6e0;
+    --pil-ink:         #1c3464;
+    --pil-ink-soft:    #4d5f85;
+    --pil-ink-mute:    #7a8aa5;
+
+    /* Semantic aliases */
+    --fg:              var(--pil-ink);
+    --fg-soft:         var(--pil-ink-soft);
+    --fg-mute:         var(--pil-ink-mute);
+    --fg-inverse:      var(--pil-white);
+    --bg:              var(--pil-white);
+    --bg-soft:         var(--pil-paper);
+    --bg-tint:         var(--pil-tint);
+    --bg-inverse:      var(--pil-navy);
+    --accent:          var(--pil-teal);
+    --accent-press:    #2a7799;
+    --link:            var(--pil-teal);
+    --link-hover:      var(--pil-navy);
+    --border:          var(--pil-rule);
+    --border-strong:   var(--pil-rule-strong);
+
+    /* Typography */
+    --font-display: 'Playfair Display', 'Bodoni 72', 'Didot', 'Georgia', serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-script:  'Caveat', 'Brush Script MT', cursive;
+
+    /* Type scale */
+    --t-h1:        36px;  --lh-h1:    40px;
+    --t-h2:        28px;  --lh-h2:    32px;
+    --t-h3:        22px;  --lh-h3:    28px;
+    --t-h4:        18px;  --lh-h4:    24px;
+    --t-body:      16px;  --lh-body:  24px;
+    --t-small:     14px;  --lh-small: 20px;
+    --t-caption:   13px;  --lh-caption: 18px;
+
+    /* Letter-spacing */
+    --ls-tight:    -0.015em;
+    --ls-eyebrow:  0.14em;
+
+    /* Weights */
+    --w-light: 300; --w-regular: 400; --w-medium: 500;
+    --w-semibold: 600; --w-bold: 700; --w-extra: 800; --w-black: 900;
+
+    /* Spacing — 4px base */
+    --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+    --space-5: 20px; --space-6: 24px; --space-7: 32px; --space-8: 40px;
+    --space-9: 56px; --space-10: 72px; --space-11: 96px;
+
+    /* Radii / Motion */
+    --r-xs: 2px;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur:  200ms;
+
+    /* Page-specific */
     --maxw: 720px;
   }
 
@@ -27,11 +92,9 @@
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Libre Franklin", system-ui, sans-serif;
-    font-size: 17px;
-    line-height: 1.7;
+    background: var(--bg);
+    color: var(--fg);
+    font: var(--w-regular) var(--t-body)/var(--lh-body) var(--font-body);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -39,7 +102,7 @@
   .wrap {
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: 0 28px;
+    padding: 0 var(--space-7);
   }
 
   /* subtle staggered entrance */
@@ -51,6 +114,7 @@
   .reveal:nth-child(1) { animation-delay: .05s; }
   .reveal:nth-child(2) { animation-delay: .15s; }
   .reveal:nth-child(3) { animation-delay: .25s; }
+  .reveal:nth-child(4) { animation-delay: .35s; }
   @keyframes rise { to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) {
     .reveal { animation: none; opacity: 1; transform: none; }
@@ -59,96 +123,154 @@
 
   /* ---- Header ---- */
   header {
-    border-bottom: 1px solid var(--line);
-    padding: 30px 0;
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-7) 0;
   }
   .brand {
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: -0.01em;
-  }
-  .descriptor {
-    margin-top: 5px;
-    font-size: 13px;
+    font: var(--w-black) 20px/1 var(--font-display);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--fg);
+  }
+  .descriptor {
+    margin-top: var(--space-2);
+    font: var(--w-medium) var(--t-caption)/var(--lh-caption) var(--font-body);
+    letter-spacing: 0.04em;
+    color: var(--fg-soft);
   }
 
   /* ---- Hero ---- */
-  .hero { padding: 96px 0 88px; }
+  .hero { padding: var(--space-11) 0 var(--space-10); }
   .hero h1 {
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 600;
-    font-size: clamp(2.4rem, 7vw, 3.6rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font: var(--w-extra) var(--t-h1)/var(--lh-h1) var(--font-display);
+    letter-spacing: var(--ls-tight);
+    color: var(--fg);
   }
   .hero p {
-    margin-top: 26px;
-    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
-    color: var(--muted);
+    margin-top: var(--space-5);
+    font: var(--w-regular) var(--t-h4)/26px var(--font-body);
+    color: var(--fg-soft);
+    max-width: 36em;
+  }
+  .hero .creds {
+    margin-top: var(--space-7);
+    font: var(--w-medium) 12px/1 var(--font-body);
+    letter-spacing: 0.12em;
+    color: var(--fg-soft);
+  }
+  .hero .stance {
+    margin-top: var(--space-6);
+    font: var(--w-medium) var(--t-small)/var(--lh-small) var(--font-body);
+    color: var(--fg);
     max-width: 36em;
   }
 
   /* ---- Sections ---- */
   section.block {
-    padding: 64px 0;
-    border-top: 1px solid var(--line);
+    padding: var(--space-10) 0;
+    border-top: 1px solid var(--border);
   }
   h2 {
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 600;
-    font-size: 1.45rem;
-    letter-spacing: -0.01em;
-    margin-bottom: 22px;
+    font: var(--w-bold) var(--t-h2)/var(--lh-h2) var(--font-display);
+    letter-spacing: var(--ls-tight);
+    color: var(--fg);
+    margin-bottom: var(--space-6);
   }
-  .block p { margin-bottom: 16px; max-width: 40em; }
+  .block p {
+    margin-bottom: var(--space-4);
+    max-width: 40em;
+    color: var(--fg);
+  }
   .block p:last-child { margin-bottom: 0; }
 
-  /* ---- What's Coming ---- */
-  .coming { display: grid; gap: 26px; }
-  .coming .item { display: grid; gap: 4px; }
-  .coming .label {
-    font-weight: 600;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
+  /* ---- Contrast ---- */
+  .contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+    margin-top: var(--space-2);
   }
-  .coming .desc { color: var(--muted); }
+  .contrast .col-label {
+    font: var(--w-bold) var(--t-h4)/var(--lh-h4) var(--font-display);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .contrast .col-without .col-label { color: var(--fg-soft); }
+  .contrast .col-with .col-label { color: var(--accent); }
+  .contrast .col-list { list-style: none; padding: 0; margin: 0; }
+  .contrast .col-list li {
+    padding: var(--space-2) 0;
+    font: var(--w-regular) var(--t-small)/1.5 var(--font-body);
+  }
+  .contrast .col-without .col-list li { color: var(--fg-soft); }
+  .contrast .col-with .col-list li { color: var(--fg); }
+  @media (max-width: 560px) {
+    .contrast { grid-template-columns: 1fr; gap: var(--space-6); }
+  }
 
-  /* ---- Connect ---- */
-  .connect p { color: var(--muted); margin-bottom: 26px; }
+  /* ---- Ladder ---- */
+  .ladder { display: grid; gap: var(--space-8); }
+  .rung {
+    display: grid;
+    gap: var(--space-1);
+    padding-left: var(--space-5);
+    border-left: 2px solid var(--border);
+  }
+  .rung.active { border-left-color: var(--accent); }
+  .rung .status {
+    font: var(--w-semibold) var(--t-caption)/1 var(--font-body);
+    letter-spacing: var(--ls-eyebrow);
+    color: var(--fg-soft);
+  }
+  .rung.active .status { color: var(--accent); }
+  .rung .name {
+    font: var(--w-bold) var(--t-h3)/var(--lh-h3) var(--font-display);
+    color: var(--fg);
+    margin-top: var(--space-1);
+  }
+  .rung .desc { color: var(--fg-soft); max-width: 40em; margin-top: var(--space-2); }
+  .rung .cta { margin-top: var(--space-3); }
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: var(--ink);
-    color: var(--paper);
+    gap: var(--space-2);
+    background: var(--bg-inverse);
+    color: var(--fg-inverse);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.98rem;
-    padding: 15px 26px;
-    border-radius: 2px;
-    transition: background .2s ease, transform .2s ease;
+    font: var(--w-medium) var(--t-small)/1 var(--font-body);
+    padding: 14px var(--space-6);
+    border-radius: var(--r-xs);
+    transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
   }
   .btn:hover { background: var(--accent); transform: translateY(-1px); }
   .btn svg { width: 16px; height: 16px; }
 
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--accent);
+    text-decoration: none;
+    font: var(--w-medium) var(--t-small)/1 var(--font-body);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color var(--dur) var(--ease);
+  }
+  .link-arrow:hover { border-bottom-color: var(--accent); }
+  .link-arrow svg { width: 14px; height: 14px; }
+
   /* ---- Footer ---- */
   footer {
-    border-top: 1px solid var(--line);
-    padding: 36px 0 56px;
-    font-size: 13px;
-    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding: var(--space-7) 0 var(--space-9);
+    font: var(--w-regular) var(--t-caption)/var(--lh-caption) var(--font-body);
+    color: var(--fg-mute);
   }
 
   @media (max-width: 560px) {
-    body { font-size: 16px; }
-    .hero { padding: 64px 0 56px; }
-    section.block { padding: 52px 0; }
+    .hero { padding: var(--space-9) 0 var(--space-8); }
+    section.block { padding: var(--space-9) 0; }
   }
 </style>
 </head>
@@ -157,15 +279,17 @@
   <header>
     <div class="wrap">
       <div class="brand">The Process Innovation Lab</div>
-      <div class="descriptor">Customer experience · Operational excellence · Intelligent automation</div>
+      <div class="descriptor">Design Thinking | Operational Excellence | Intelligent Automation</div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="wrap">
-        <h1 class="reveal">Orchestrate AI.<br>Amplify your craft.</h1>
-        <p class="reveal">Practical training and coaching for continuous-improvement professionals — from seasoned practitioners to early-career analysts — learning to do their best work in the AI era.</p>
+        <h1 class="reveal">When you orchestrate AI,<br>you amplify your craft.</h1>
+        <p class="reveal">Practical training and coaching for continuous-improvement professionals, from seasoned practitioners to early-career analysts, learning to do their best work in the AI era.</p>
+        <div class="creds reveal">MBA | DT4OPEX | CSSBB | PMP | HCD | CM</div>
+        <p class="stance reveal">No tool-of-the-week. No &ldquo;10x&rdquo; shortcuts. Process craft, sharpened.</p>
       </div>
     </section>
 
@@ -173,41 +297,75 @@
       <div class="wrap">
         <h2>About</h2>
         <p>The Process Innovation Lab is where continuous-improvement craft meets the AI era.</p>
-        <p>Continuous improvement isn't one discipline — it spans customer experience, operational excellence, and intelligent automation. The Lab works across all three.</p>
+        <p>Continuous improvement isn't one discipline. It spans design thinking, operational excellence, and intelligent automation. The Lab works across all three.</p>
         <p>Most CI professionals are caught between two pressures: AI is changing how the work gets done, and good process thinking matters more than ever. Senior practitioners are working out where AI fits. Early-career analysts are strong on tools but still building craft. This is the space in between.</p>
-        <p>With an MBA, Certified Six Sigma Black Belt, and 25 years in process improvement across these areas, I build products and coaching that help you use AI without losing the craft underneath it.</p>
+        <p>Across 25 years in process improvement, I build products and coaching that help you use AI without losing the craft underneath it.</p>
         <p>No consulting engagements. No frameworks for their own sake. Just practical learning you can apply.</p>
       </div>
     </section>
 
     <section class="block">
       <div class="wrap">
-        <h2>What's Coming</h2>
-        <div class="coming">
-          <div class="item">
-            <span class="label">Self-paced products</span>
-            <span class="desc">Courses and toolkits for applying CI craft in an AI-driven environment.</span>
+        <h2>Two ways to use AI</h2>
+        <div class="contrast">
+          <div class="col col-without">
+            <div class="col-label">AI without craft</div>
+            <ul class="col-list">
+              <li>Tool of the week, abandoned</li>
+              <li>Generic prompts from a library</li>
+              <li>Replaces the thinking step</li>
+              <li>Output for the inbox</li>
+            </ul>
           </div>
-          <div class="item">
-            <span class="label">Coaching</span>
-            <span class="desc">Direct support for professionals leveling up their process and AI-orchestration skills.</span>
-          </div>
-          <div class="item">
-            <span class="label">Writing</span>
-            <span class="desc">Regular thinking on the intersection of continuous improvement and AI.</span>
+          <div class="col col-with">
+            <div class="col-label">AI with craft</div>
+            <ul class="col-list">
+              <li>One operating system, refined</li>
+              <li>Domain-shaped prompts from real process knowledge</li>
+              <li>Sharpens the thinking step</li>
+              <li>A method you can teach the team</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="block connect">
+    <section class="block">
       <div class="wrap">
-        <h2>Connect</h2>
-        <p>Products and coaching launch soon.</p>
-        <a class="btn" href="https://www.linkedin.com/company/the-process-innovation-lab" target="_blank" rel="noopener">
-          Follow on LinkedIn
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+        <h2>How to follow along</h2>
+        <div class="ladder">
+
+          <div class="rung active">
+            <div class="status">Now</div>
+            <div class="name">Follow</div>
+            <p class="desc">Notes from the Lab on LinkedIn. Short pieces on continuous-improvement craft in the AI era.</p>
+            <div class="cta">
+              <a class="btn" href="https://www.linkedin.com/company/the-process-innovation-lab" target="_blank" rel="noopener">
+                Follow on LinkedIn
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="rung active">
+            <div class="status">Now</div>
+            <div class="name">Read</div>
+            <p class="desc">Regular thinking on the intersection of continuous improvement and AI.</p>
+            <div class="cta">
+              <a class="link-arrow" href="https://theprocessinnovationlab.substack.com/" target="_blank" rel="noopener">
+                Read on Substack
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="rung">
+            <div class="status">Later</div>
+            <div class="name">Work with me</div>
+            <p class="desc">Courses, toolkits, and coaching for professionals applying CI craft in an AI-driven environment.</p>
+          </div>
+
+        </div>
       </div>
     </section>
   </main>
