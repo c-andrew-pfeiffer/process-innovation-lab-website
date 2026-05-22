@@ -126,17 +126,34 @@
     border-bottom: 1px solid var(--border);
     padding: var(--space-7) 0;
   }
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .brand-mark {
+    width: 56px;
+    height: auto;
+    flex: none;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+  }
   .brand-img {
     display: block;
-    height: 28px;
-    width: auto;
+    width: 392px;
+    max-width: 100%;
+    height: auto;
   }
   .descriptor {
-    margin-top: var(--space-2);
     font: var(--w-medium) var(--t-caption)/var(--lh-caption) var(--font-body);
     letter-spacing: 0.04em;
     color: var(--fg-soft);
   }
+  .descriptor .sep { color: var(--accent); }
 
   /* ---- Hero ---- */
   .hero { padding: var(--space-11) 0 var(--space-10); }
@@ -270,6 +287,8 @@
   @media (max-width: 560px) {
     .hero { padding: var(--space-9) 0 var(--space-8); }
     section.block { padding: var(--space-9) 0; }
+    .brand-mark { width: 44px; }
+    .brand-lockup { gap: var(--space-3); }
   }
 </style>
 </head>
@@ -277,8 +296,13 @@
 
   <header>
     <div class="wrap">
-      <img class="brand-img" src="logo-wordmark.png" alt="The Process Innovation Lab">
-      <div class="descriptor">Design Thinking | Operational Excellence | Intelligent Automation</div>
+      <div class="brand-lockup">
+        <img class="brand-mark" src="logo-mark.png" alt="">
+        <div class="brand-text">
+          <img class="brand-img" src="logo-wordmark.png" alt="The Process Innovation Lab">
+          <div class="descriptor">Design Thinking <span class="sep">|</span> Operational Excellence <span class="sep">|</span> Intelligent Automation</div>
+        </div>
+      </div>
     </div>
   </header>
 
